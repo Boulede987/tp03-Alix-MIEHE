@@ -26,12 +26,16 @@ export class FormDelcarationPollution {
     longitude: new FormControl('', [Validators.required, Validators.min(-180), Validators.max(180)]),
     latitude: new FormControl('', [Validators.required, Validators.min(-90), Validators.max(90)]),
     photo: new FormControl('')
-  });
+  })
 
   onSubmit()
   {
-    this.pollution = Object.assign(new SubmittedPollution(), this.pollutionForm.value);
-    this.submitted = true;
+    this.pollution = Object.assign(new SubmittedPollution(), this.pollutionForm.value)
+    this.submitted = true
   }
 
 }
+
+
+
+

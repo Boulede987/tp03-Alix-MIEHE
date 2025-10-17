@@ -1,4 +1,5 @@
-export class SubmittedPollution {
+export class SubmittedPollution 
+{
     titre: string = ""
     type: string = ""
     description: string = ""

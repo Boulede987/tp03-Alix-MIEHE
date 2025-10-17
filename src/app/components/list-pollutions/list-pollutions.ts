@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { PollutionAPI } from '../../services/pollution-api';
+import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 
 @Component({
   selector: 'app-list-pollutions',
@@ -6,6 +10,13 @@ import { Component } from '@angular/core';
   templateUrl: './list-pollutions.html',
   styleUrl: './list-pollutions.scss'
 })
-export class ListPollutions {
+export class ListPollutions implements OnInit {
 
+  submittedPollutions$ ? : Observable<SubmittedPollution[]>
+
+  constructor(private pollutionApi : PollutionAPI) { }
+
+  ngOnInit() {
+    this.submittedPollutions$ = this.pollutionApi.getClients ();
+  }
 }
