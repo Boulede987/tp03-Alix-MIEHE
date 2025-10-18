@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TP02-Alix-MIEHE": {
+    "TP03-Alix-MIEHE": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
