@@ -1,7 +1,17 @@
 <div class="recap-card">
-  <h2>Pollution Declaration Recap</h2>
+  <!-- Si c'est pour afficher un récapitulatif après déclaration -->
+  @if (isRecap)
+  {
+    <h2>Déclaration réussie</h2>
 
-  <p><strong>Titre:</strong> {{ pollution.titre }}</p>
+    <p><strong>Titre:</strong> {{ pollution.titre }}</p><!-- Le titre est un champ -->
+  }
+  @else 
+  {
+    <!-- Autrement, on affiche le titre en tant que... titre. -->
+    <h2>{{ pollution.titre }}</h2>
+  }
+
   <p><strong>Type:</strong> {{ pollution.type }}</p>
   <p><strong>Description:</strong> {{ pollution.description }}</p>
   <p><strong>Date:</strong> {{ pollution.date | date:'mediumDate' }}</p>

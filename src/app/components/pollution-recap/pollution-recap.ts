@@ -3,13 +3,14 @@ import { DatePipe } from '@angular/common';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 
 @Component({
-  selector: 'app-form-delcaration-pollution-recap',
+  selector: 'app-pollution-recap',
   imports: [DatePipe],
-  templateUrl: './form-delcaration-pollution-recap.html',
-  styleUrl: './form-delcaration-pollution-recap.scss'
+  templateUrl: './pollution-recap.html',
+  styleUrl: './pollution-recap.scss'
 })
-export class FormDelcarationPollutionRecap {
+export class PollutionRecap {
 
   @Input({ required: true }) pollution : SubmittedPollution = new SubmittedPollution
+  @Input({ required: false }) isRecap : boolean = false 
   
 }

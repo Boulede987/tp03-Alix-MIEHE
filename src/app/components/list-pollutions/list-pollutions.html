@@ -1,1 +1,11 @@
 <p>list-pollutions works!</p>
+
+@for (pollution of (submittedPollutions$ | async); track submittedPollutions$) 
+{
+    <p>{{ pollution.titre }} - {{ pollution.type }}</p>
+}
+@empty
+{
+    <p>Empty!</p>
+}
+

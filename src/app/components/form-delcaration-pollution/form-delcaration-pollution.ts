@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
-import { FormDelcarationPollutionRecap } from '../form-delcaration-pollution-recap/form-delcaration-pollution-recap';
+import { PollutionRecap } from '../pollution-recap/pollution-recap';
 
 @Component({
   selector: 'app-form-delcaration-pollution',
-  imports: [ReactiveFormsModule, FormDelcarationPollutionRecap],
+  imports: [ReactiveFormsModule, PollutionRecap],
   templateUrl: './form-delcaration-pollution.html',
   styleUrl: './form-delcaration-pollution.scss'
 })
