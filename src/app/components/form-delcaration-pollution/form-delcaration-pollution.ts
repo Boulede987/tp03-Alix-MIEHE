@@ -37,7 +37,7 @@ export class FormDelcarationPollution {
   {
     this.pollution = Object.assign(new SubmittedPollution(), this.pollutionForm.value)
 
-    this.pollutionApi.postPollutions(this.pollution)
+    this.pollutionApi.postPollution(this.pollution)
 
     this.submitted = true
   }

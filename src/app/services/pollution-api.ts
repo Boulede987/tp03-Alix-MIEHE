@@ -23,23 +23,26 @@ export class PollutionAPI {
 
 
 
-  public postPollutions (pollution : SubmittedPollution) 
+  public postPollution (pollution : SubmittedPollution) 
   {
       this.http.post(environment.backendClient, pollution)
+      console.log("Ajout de la pollution!\n Angular ne permet pas la modification d'un asset mock .json.")
   }
 
 
 
-  public putPollutions (pollution : SubmittedPollution) 
+  public putPollution (pollution : SubmittedPollution) 
   {
       this.http.put(environment.backendClient, pollution)
+      console.log("Modification de la pollution!\n  Angular ne permet pas la modification d'un asset mock .json.")
   }
 
 
-  
-  public deletePollutions (pollution : SubmittedPollution) 
+
+  public deletePollution (pollution : SubmittedPollution) 
   {
       this.http.delete(environment.backendClient, { body: pollution } )
+      console.log("Suppression de la pollution!\n  Angular ne permet pas la modification d'un asset mock .json.")
   }
 
 }
