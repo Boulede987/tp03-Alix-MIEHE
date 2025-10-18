@@ -12,17 +12,41 @@
     <h2>{{ pollution.titre }}</h2>
   }
 
-  <p><strong>Type:</strong> {{ pollution.type }}</p>
-  <p><strong>Description:</strong> {{ pollution.description }}</p>
-  <p><strong>Date:</strong> {{ pollution.date | date:'mediumDate' }}</p>
-  <p><strong>Lieu:</strong> {{ pollution.lieu }}</p>
-  <p><strong>Longitude:</strong> {{ pollution.longitude }}</p>
-  <p><strong>Latitude:</strong> {{ pollution.latitude }}</p>
+  <!-- Si c'est un recap, on veux les details. Sinon, on laisse l'utilisateur choisir de l'afficher ou non -->
+  @if (isRecap || showDetail)
+  {
+    <p><strong>Type:</strong> {{ pollution.type }}</p>
+    <p><strong>Description:</strong> {{ pollution.description }}</p>
+    <p><strong>Date:</strong> {{ pollution.date | date:'mediumDate' }}</p>
+    <p><strong>Lieu:</strong> {{ pollution.lieu }}</p>
+    <p><strong>Longitude:</strong> {{ pollution.longitude }}</p>
+    <p><strong>Latitude:</strong> {{ pollution.latitude }}</p>
 
-  @if (pollution.photo) {
-    <div class="photo">
-      <strong>Photo:</strong><br>
-      <img [src]="pollution.photo" alt="Pollution Photo" width="300">
-    </div>
+    @if (pollution.photo) 
+    {
+      <div class="photo">
+        <strong>Photo:</strong><br>
+        <img [src]="pollution.photo" alt="Pollution Photo" width="300">
+      </div>
+    }
+
   }
+
+  <!-- Si on veux pouvoir afficher ou cacher le detail, ce n'est pas un recap -->
+  @if (isRecap == false)
+  {
+    @if (showDetail)
+    {
+      <button (click)="changeShowDetail(false)">
+        Cacher le détail
+      </button>
+    }
+    @else
+    {
+      <button (click)="changeShowDetail(true)">
+        Afficher le détail
+      </button>
+    }
+  }
+
 </div>

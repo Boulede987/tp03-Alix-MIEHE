@@ -12,5 +12,12 @@ export class PollutionRecap {
 
   @Input({ required: true }) pollution : SubmittedPollution = new SubmittedPollution
   @Input({ required: false }) isRecap : boolean = false 
+
+  showDetail : boolean = false
+
+  changeShowDetail(show : boolean)
+  {
+    this.showDetail = show
+  }
   
 }

@@ -1,8 +1,15 @@
 @for (pollution of (submittedPollutions$ | async); track submittedPollutions$) 
 {
     <app-pollution-recap [pollution]="pollution"></app-pollution-recap>
-    <p>Suppression</p>
-    <p>Modification</p>
+    
+    <!-- <button (click)="onDelete(pollution)"> -->
+    <button>
+        Supprimer
+    </button>
+    <!-- <button (click)="onEdit(pollution)"> -->
+    <button>
+        Modifier
+    </button>
 }
 @empty
 {
