@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 import { PollutionRecap } from '../pollution-recap/pollution-recap';
@@ -10,11 +10,12 @@ import { PollutionAPI } from '../../services/pollution-api';
   templateUrl: './form-delcaration-pollution.html',
   styleUrl: './form-delcaration-pollution.scss'
 })
-export class FormDelcarationPollution {
+export class FormDelcarationPollution implements OnInit {
 
-  pollution : SubmittedPollution = new SubmittedPollution
+  @Input({ required: false }) pollution ? : SubmittedPollution
 
   submitted : boolean = false
+  isEditMode: boolean = false
   
   pollutionForm = new FormGroup({
     // Validators.required -> oblige re remplir le formulaire, d'une certaine manière
@@ -30,14 +31,48 @@ export class FormDelcarationPollution {
   })
 
 
-  constructor(private pollutionApi : PollutionAPI) { }
+  constructor(private pollutionApi : PollutionAPI) 
+  {
+    //
+  }
+
+
+  ngOnInit() 
+  {
+    // Si on as une pollution passée en paramètre, on est en mode édition.
+    this.isEditMode = (this.pollution != null)
+    
+    if (this.isEditMode && this.pollution) {
+      // Populate form with existing data
+      this.pollutionForm.patchValue
+      (
+        {
+          titre: this.pollution.titre,
+          type: this.pollution.type,
+          description: this.pollution.description,
+          date: this.pollution.date.toDateString(),
+          lieu: this.pollution.lieu,
+          longitude: this.pollution.longitude.toString(),
+          latitude: this.pollution.latitude.toString(),
+          photo: this.pollution.photo
+        }
+      )
+    }
+  }
 
 
   onSubmit()
   {
     this.pollution = Object.assign(new SubmittedPollution(), this.pollutionForm.value)
 
-    this.pollutionApi.postPollution(this.pollution)
+    if (this.isEditMode && this.pollution) // si on est en mode edition
+    {
+      this.pollutionApi.putPollution(this.pollution)
+    }
+    else  // sinon, on est en creation
+    {
+      this.pollutionApi.postPollution(this.pollution)
+    }
 
     this.submitted = true
   }

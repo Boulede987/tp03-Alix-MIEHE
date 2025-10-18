@@ -10,7 +10,7 @@ import { SubmittedPollution } from '../../classes/submittedPollution/submitted-p
 })
 export class PollutionRecap {
 
-  @Input({ required: true }) pollution : SubmittedPollution = new SubmittedPollution
+  @Input({ required: true }) pollution ! : SubmittedPollution
   @Input({ required: false }) isRecap : boolean = false 
 
   showDetail : boolean = false

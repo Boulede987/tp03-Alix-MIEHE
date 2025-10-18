@@ -6,20 +6,24 @@ import { Observable, combineLatest, map, startWith } from 'rxjs';
 import { PollutionRecap } from '../pollution-recap/pollution-recap';
 import { PollutionAPI } from '../../services/pollution-api';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
+import { FormDelcarationPollution } from '../form-delcaration-pollution/form-delcaration-pollution';
 
 @Component({
   selector: 'app-list-pollutions',
-  imports: [AsyncPipe, PollutionRecap, ReactiveFormsModule],
+  imports: [AsyncPipe, PollutionRecap, ReactiveFormsModule, FormDelcarationPollution],
   templateUrl: './list-pollutions.html',
   styleUrl: './list-pollutions.scss'
 })
 export class ListPollutions implements OnInit {
 
   submittedPollutions$ ? : Observable<SubmittedPollution[]>
-  filteredPollutions$!: Observable<SubmittedPollution[]>;
+  filteredPollutions$ ! : Observable<SubmittedPollution[]>
 
-  searchFilter = new FormControl('');
-  typeFilter = new FormControl('');
+  searchFilter = new FormControl('')
+  typeFilter = new FormControl('')
+
+  showForm : boolean = false // pour permette l'édition via formulaire
+  selectedPollution ! : SubmittedPollution
 
   constructor(private pollutionApi : PollutionAPI) 
   {
@@ -86,5 +90,17 @@ export class ListPollutions implements OnInit {
     this.pollutionApi.deletePollution(pollution)
   }
 
+
+  onEdit(pollution: SubmittedPollution) {
+    this.selectedPollution = pollution;
+    this.showForm = true;
+  }
+
+  onFormClosed() {
+    this.showForm = false;
+    this.selectedPollution = new SubmittedPollution;
+    // Refresh the list after form submission
+    this.submittedPollutions$ = this.pollutionApi.getPollutions();
+  }
 
 }
