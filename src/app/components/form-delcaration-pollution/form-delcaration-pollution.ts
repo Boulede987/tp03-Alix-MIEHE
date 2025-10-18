@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 import { PollutionRecap } from '../pollution-recap/pollution-recap';
 import { PollutionAPI } from '../../services/pollution-api';
@@ -12,10 +14,10 @@ import { PollutionAPI } from '../../services/pollution-api';
 })
 export class FormDelcarationPollution implements OnInit {
 
-  @Input({ required: false }) pollution ? : SubmittedPollution
+  pollution ? : SubmittedPollution
 
   submitted : boolean = false
-  isEditMode: boolean = false
+  isEditMode : boolean = false
   
   pollutionForm = new FormGroup({
     // Validators.required -> oblige re remplir le formulaire, d'une certaine manière
@@ -31,7 +33,12 @@ export class FormDelcarationPollution implements OnInit {
   })
 
 
-  constructor(private pollutionApi : PollutionAPI) 
+  constructor
+  (
+    private pollutionApi : PollutionAPI,
+    private route : ActivatedRoute,
+    private router : Router
+  ) 
   {
     //
   }
@@ -39,31 +46,41 @@ export class FormDelcarationPollution implements OnInit {
 
   ngOnInit() 
   {
-    // Si on as une pollution passée en paramètre, on est en mode édition.
-    this.isEditMode = (this.pollution != null)
+
+    // Check if we have an ID in the route parameters
+    const pollutionId : number = parseInt(this.route.snapshot.paramMap.get('id')!)
     
-    if (this.isEditMode && this.pollution) {
-      // Populate form with existing data
-      this.pollutionForm.patchValue
-      (
-        {
+    if (pollutionId) {
+
+      // Edit mode - load the pollution
+      this.isEditMode = true;
+
+      this.pollutionApi.getPollutionById(pollutionId).subscribe(foundPollution => {
+        this.pollution = foundPollution;
+        const formValue = {
+          id: this.pollution.id.toString(),
           titre: this.pollution.titre,
           type: this.pollution.type,
           description: this.pollution.description,
-          date: this.pollution.date.toDateString(),
+          date: this.pollution.date.toString(),
           lieu: this.pollution.lieu,
           longitude: this.pollution.longitude.toString(),
           latitude: this.pollution.latitude.toString(),
           photo: this.pollution.photo
-        }
-      )
+        
+        };
+        this.pollutionForm.patchValue(formValue);
+      });
     }
+    // If no ID, we're in create mode (isEditMode stays false)
+
   }
 
 
   onSubmit()
   {
     this.pollution = Object.assign(new SubmittedPollution(), this.pollutionForm.value)
+    this.pollution.id = Math.random()
 
     if (this.isEditMode && this.pollution) // si on est en mode edition
     {
@@ -75,6 +92,10 @@ export class FormDelcarationPollution implements OnInit {
     }
 
     this.submitted = true
+  }
+
+  cancel() {
+    this.router.navigate(['/']);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 
 @Component({
@@ -15,9 +16,21 @@ export class PollutionRecap {
 
   showDetail : boolean = false
 
+  constructor
+  (
+    private router: Router
+  )
+  {
+    //
+  }
+
   changeShowDetail(show : boolean)
   {
     this.showDetail = show
+  }
+
+  cancel() {
+    this.router.navigate(['/']);
   }
   
 }

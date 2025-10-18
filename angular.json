@@ -60,10 +60,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "TP02-Alix-MIEHE:build:production"
+              "buildTarget": "TP03-Alix-MIEHE:build:production"
             },
             "development": {
-              "buildTarget": "TP02-Alix-MIEHE:build:development"
+              "buildTarget": "TP03-Alix-MIEHE:build:development"
             }
           },
           "defaultConfiguration": "development"

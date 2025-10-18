@@ -47,5 +47,10 @@
       </button>
     }
   }
+   <!-- Si c'est un recap, on veux permettre à l'utilisateur de retourner à la page d'acceuil -->
+  @else
+  {
+    <button type="button" (click)="cancel()">Retour</button>
+  }
 
 </div>

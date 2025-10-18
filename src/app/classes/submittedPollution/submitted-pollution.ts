@@ -1,5 +1,6 @@
 export class SubmittedPollution 
 {
+    id: number = 0
     titre: string = ""
     type: string = ""
     description: string = ""

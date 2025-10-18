@@ -83,11 +83,17 @@
       }
     </div>
 
-    <button type="submit" [disabled]="pollutionForm.invalid">Submit</button>
+    <button type="submit" [disabled]="pollutionForm.invalid">
+      {{ isEditMode ? 'Mettre à jour' : 'Soumettre' }}
+    </button>
+    
+    <button type="button" (click)="cancel()">Annuler</button>
+    
   </form>
 
 }
 @else
 {
-  <app-pollution-recap [pollution]="pollution" [isRecap]="true"></app-pollution-recap>
+  <!-- "!" après pollution pour signifier qu'on est sûr qu'il n'est pas undefined -->
+  <app-pollution-recap [pollution]="pollution ! " [isRecap]="true"></app-pollution-recap>
 }

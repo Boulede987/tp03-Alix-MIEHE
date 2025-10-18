@@ -1,5 +1,6 @@
 [
     {
+        "id": "1",
         "titre": "Fuite d'huile industrielle",
         "type": "Eau",
         "description": "Déversement important d'huile de moteur dans le canal, nappe visible sur environ 50 mètres",
@@ -10,6 +11,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "2",
         "titre": "Émissions de fumée noire",
         "type": "Air",
         "description": "Usine émettant de la fumée noire épaisse depuis plusieurs jours, odeur désagréable dans le quartier",
@@ -20,6 +22,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "3",
         "titre": "Déchets plastiques sur la plage",
         "type": "Plastique",
         "description": "Accumulation de bouteilles, sacs et emballages plastiques le long de la berge",
@@ -30,6 +33,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "4",
         "titre": "Produits chimiques abandonnés",
         "type": "Chimique",
         "description": "Plusieurs bidons de produits chimiques non identifiés abandonnés près d'un terrain vague",
@@ -40,6 +44,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "5",
         "titre": "Dépôt de gravats et déchets",
         "type": "Dépôt sauvage",
         "description": "Tas important de gravats, vieux meubles et déchets de construction abandonnés en forêt",
@@ -50,6 +55,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "6",
         "titre": "Pollution de rivière par effluents",
         "type": "Eau",
         "description": "Eau trouble avec mousse blanche suspecte, poissons morts observés sur 200m",
@@ -60,6 +66,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "7",
         "titre": "Brûlage de déchets plastiques",
         "type": "Air",
         "description": "Fumée toxique provenant d'un brûlage illégal de déchets plastiques dans un jardin privé",
@@ -70,6 +77,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "8",
         "titre": "Emballages abandonnés en nature",
         "type": "Plastique",
         "description": "Zone pique-nique envahie de bouteilles plastiques, emballages alimentaires et sacs jetables",
@@ -80,6 +88,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "9",
         "titre": "Déversement de solvants",
         "type": "Chimique",
         "description": "Traces de solvants industriels au sol, forte odeur chimique persistante",
@@ -90,6 +99,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "10",
         "titre": "Électroménager abandonné",
         "type": "Dépôt sauvage",
         "description": "Réfrigérateurs, lave-linge et autres appareils électroménagers jetés illégalement",
@@ -100,6 +110,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "11",
         "titre": "Contamination agricole du ruisseau",
         "type": "Eau",
         "description": "Ruisseau présentant une couleur anormale verte, suspicion d'engrais ou pesticides",
@@ -110,6 +121,7 @@
         "photo": "https://picsum.photos/200"
     },
     {
+        "id": "12",
         "titre": "Pollution atmosphérique trafic routier",
         "type": "Air",
         "description": "Pic de pollution aux particules fines près de l'autoroute, visibilité réduite",
