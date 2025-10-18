@@ -47,16 +47,17 @@ export class FormDelcarationPollution implements OnInit {
   ngOnInit() 
   {
 
-    // Check if we have an ID in the route parameters
+    // On verifie si on as un id dans l'url
     const pollutionId : number = parseInt(this.route.snapshot.paramMap.get('id')!)
     
     if (pollutionId) {
 
-      // Edit mode - load the pollution
+      // si on en as un, on est en mode edition
       this.isEditMode = true;
 
       this.pollutionApi.getPollutionById(pollutionId).subscribe(foundPollution => {
         this.pollution = foundPollution;
+        // on récupère les données de l'objet pollution
         const formValue = {
           id: this.pollution.id.toString(),
           titre: this.pollution.titre,
@@ -69,10 +70,10 @@ export class FormDelcarationPollution implements OnInit {
           photo: this.pollution.photo
         
         };
-        this.pollutionForm.patchValue(formValue);
+        this.pollutionForm.patchValue(formValue); // et on les ajoutes dans le formulaire pour le pré remplir
       });
     }
-    // If no ID, we're in create mode (isEditMode stays false)
+    // si on as pas d'id, on reste en mode creation (isEditMode reste a false)
 
   }
 

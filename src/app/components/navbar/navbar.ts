@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterModule], // necessary for router naviguation
+  imports: [RouterModule], // nécessaire pour la naviguation via router
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
