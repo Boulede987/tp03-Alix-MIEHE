@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 import { PollutionRecap } from '../pollution-recap/pollution-recap';
+import { PollutionAPI } from '../../services/pollution-api';
 
 @Component({
   selector: 'app-form-delcaration-pollution',
@@ -28,9 +29,16 @@ export class FormDelcarationPollution {
     photo: new FormControl('')
   })
 
+
+  constructor(private pollutionApi : PollutionAPI) { }
+
+
   onSubmit()
   {
     this.pollution = Object.assign(new SubmittedPollution(), this.pollutionForm.value)
+
+    this.pollutionApi.postPollutions(this.pollution)
+
     this.submitted = true
   }
 

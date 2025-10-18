@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 
+import { PollutionRecap } from '../pollution-recap/pollution-recap';
 import { PollutionAPI } from '../../services/pollution-api';
 import { SubmittedPollution } from '../../classes/submittedPollution/submitted-pollution';
 
 @Component({
   selector: 'app-list-pollutions',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, PollutionRecap],
   templateUrl: './list-pollutions.html',
   styleUrl: './list-pollutions.scss'
 })
@@ -21,8 +22,7 @@ export class ListPollutions implements OnInit {
 
   ngOnInit() {
 
-    this.submittedPollutions$ = this.pollutionApi.getClients()
-
+    this.submittedPollutions$ = this.pollutionApi.getPollutions()
 
   }
 }

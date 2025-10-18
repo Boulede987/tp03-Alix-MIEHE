@@ -1,8 +1,8 @@
-<p>list-pollutions works!</p>
-
 @for (pollution of (submittedPollutions$ | async); track submittedPollutions$) 
 {
-    <p>{{ pollution.titre }} - {{ pollution.type }}</p>
+    <app-pollution-recap [pollution]="pollution"></app-pollution-recap>
+    <p>Suppression</p>
+    <p>Modification</p>
 }
 @empty
 {
